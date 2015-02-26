@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>8086の逆アセンブラをHaskellで実装してみる @shigemk2</title>
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+<div id="impress">
+    <div class="step slide" data-x="-1000" data-y="-1500">
+      <q>8086の逆アセンブラをHaskellで実装してみる @shigemk2</q>
+      <img width="300" height="300" src="./img/795197.jpg" />
+    </div>
+    <div class="step slide" data-x="0" data-y="-1500">
+      <q>一応動くところまでいったので感想</q>
+      <img width="380" height="190" src="./img/150px-Haskell-Logo.svg.png" />
+      <img width="380" height="190" src="./img/250px-KL_Intel_D8086.jpg" />
+    </div>
+    <div class="step slide" data-x="0" data-y="-1500">
+      <q>一応動くところまでいったので感想</q>
+      <img width="380" height="190" src="./img/150px-Haskell-Logo.svg.png" />
+      <img width="380" height="190" src="./img/250px-KL_Intel_D8086.jpg" />
+    </div>
+    <div class="step slide" data-x="1000" data-y="-1500">
+      <q>1. とりあえずmov命令を実装する</q>
+      <q>2. 他の命令も実装する</q>
+      <q>3. 微調整</q>
+    </div>
+    <div class="step slide" data-x="2000" data-y="-1500">
+      <q style="color: red; font-weight: bold;">1. とりあえずmov命令を実装する</q>
+      <q>2. 他の命令も実装する</q>
+      <q>3. 微調整</q>
+    </div>
+    <div class="step slide" data-x="3000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/8086_reference_read.png" />
+    </div>
+    <div class="step slide" data-x="4000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/hexedit.png" />
+    </div>
+    <div class="step slide" data-x="5000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/hand_asm0.png" />
+    </div>
+    <div class="step slide" data-x="6000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/hand_asm1.png" />
+    </div>
+    <div class="step slide" data-x="7000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/runhaskell.png" />
+    </div>
+    <div class="step slide" data-x="8000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/comparendisasm.png" />
+    </div>
+    <div class="step slide" data-x="9000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/haskell_mov.png" />
+    </div>
+    <div class="step slide" data-x="10000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/haskell_code.png" />
+    </div>
+    <div class="step slide" data-x="11000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/8086_reference_modrm.png" />
+    </div>
+    <div class="step slide" data-x="12000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/modrm.png" />
+    </div>
+    <div class="step slide" data-x="13000" data-y="-1500">
+      <q>1. とりあえずmov命令を実装する</q>
+      <q style="color: red; font-weight: bold;">2. 他の命令も実装する</q>
+      <q>3. 微調整</q>
+    </div>
+    <div class="step slide" data-x="14000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/8086_reference_other.png" />
+    </div>
+    <div class="step slide" data-x="15000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/hexedit.png" />
+    </div>
+    <div class="step slide" data-x="16000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/hand_asm0.png" />
+    </div>
+    <div class="step slide" data-x="17000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/hunit.png" />
+    </div>
+    <div class="step slide" data-x="18000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/haskell_code.png" />
+      <span style="position: absolute; top: 600px; left: 350px; font-size: 72px; font-weight: bold; color: red;">実装</span>
+    </div>
+    <div class="step slide" data-x="19000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/comparendisasm_comment.png" />
+    </div>
+    <div class="step slide" data-x="20000" data-y="-1500">
+      <q>このルーチンで他の命令も実装していく</q>
+    </div>
+    <div class="step slide" data-x="21000" data-y="-1500">
+      <q>実装はそんなに難しくないけどとかく時間がかかる</q>
+      <q>ので</q>
+    </div>
+    <div class="step slide" data-x="22000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/IMG_1184.jpg" />
+      <span style="position: absolute; top: 600px; left: 100px; font-size: 72px; font-weight: bold; color: red;">社員旅行でドヤリング</span>
+    </div>
+    <div class="step slide" data-x="23000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/IMG_1185.jpg" />
+      <span style="position: absolute; top: 600px; left: 100px; font-size: 72px; font-weight: bold; color: red;">グ●ムでドヤリング</span>
+    </div>
+    <div class="step slide" data-x="24000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/xchg.png" />
+      <span style="position: absolute; top: 600px; left: 100px; font-size: 72px; font-weight: bold; color: red;">xchg ax,axはnop</span>
+    </div>
+    <div class="step slide" data-x="25000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/adddb.png" />
+      <span style="position: absolute; top: 600px; left: 100px; font-size: 72px; font-weight: bold; color: red;">82から始まる命令は欠番(db)</span>
+    </div>
+    <div class="step slide" data-x="26000" data-y="-1500">
+      <q>1. とりあえずmov命令を実装する</q>
+      <q>2. 他の命令も実装する</q>
+      <q style="color: red; font-weight: bold;">3. 微調整</q>
+    </div>
+    <div class="step slide" data-x="27000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/ccdiff.png" />
+      <span style="position: absolute; top: 600px; left: 0; font-size: 48px; font-weight: bold; color: red;">テスト用のバイナリで確認してみるとなんかすげえ差分が出ている</span>
+    </div>
+    <div class="step slide" data-x="28000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/segment_override_prefix.png" />
+      <span style="position: absolute; top: 160px; left: 0; font-size: 40px; font-weight: bold; color: red; text-shadow: -2px -2px 2px black, 2px -2px 2px black, -2px 2px 2px black, 2px 2px 2px black;">だいたいこいつのせい→</span>
+    </div>
+    <div class="step slide" data-x="29000" data-y="-1500">
+      <q>他 しんどいところ</q>
+    </div>
+    <div class="step slide" data-x="30000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/repne.png" />
+      <span style="position: absolute; top: 600px; left: 0; font-size: 48px; font-weight: bold; color: red;">rep命令 仕様書と実装ちがうじゃんか</span>
+    </div>
+    <div class="step slide" data-x="31000" data-y="-1500">
+      <img style="position: absolute; top: 0; left: 0;" width="900" height="700" src="./img/i8086.png" />
+      <span style="position: absolute; top: 600px; left: 0; font-size: 48px; font-weight: bold; color: red;">命令として割り当てられていないバイナリ</span>
+    </div>
+    <div class="step slide" data-x="32000" data-y="-1500">
+      <q>まとめ</q>
+    </div>
+    <div class="step slide" data-x="33000" data-y="-1500">
+      <q>所要時間だいたい3ヶ月 かかった時間はだいたい100時間(適当)</q>
+      <q>時間かかりすぎ</q>
+      <q>多少、8086とHaskellについてわかったのではないでしょうか</q>
+    </div>
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+
+</body>
+</html>
+
